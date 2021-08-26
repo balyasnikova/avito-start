@@ -4,6 +4,7 @@ import {
 import React from 'react';
 import NewsPage from './pages/news';
 import NewsItemPage from './pages/news-item';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     return (
