@@ -1,7 +1,13 @@
-import { GET_NEWS, NEWS_ERROR } from '../types';
+import {
+    GET_NEWS,
+    NEWS_ERROR,
+    GET_NEWS_DESCRIPTION,
+    NEWS_DESCRIPTION_ERROR,
+} from '../types';
 
 const initialState = {
     news: [],
+    newsDescriptions: {},
     loading: true,
 };
 
@@ -18,6 +24,22 @@ export default function (state = initialState, action) {
         return {
             loading: false,
             error: action.payload,
+        };
+    case GET_NEWS_DESCRIPTION:
+        // eslint-disable-next-line no-case-declarations
+        const { newsDescriptions } = state;
+        newsDescriptions[action.payload.id] = action.payload;
+        return {
+            ...state,
+            newsDescriptions,
+            loading: false,
+
+        };
+    case NEWS_DESCRIPTION_ERROR:
+        return {
+            loading: false,
+            error: action.payload,
+
         };
     default: return state;
     }

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { getNews } from '../../store/actions/newsAction';
 
 const NewsPage = () => {
@@ -9,11 +10,18 @@ const NewsPage = () => {
     useEffect(() => {
         dispatch(getNews());
     }, [dispatch]);
+    const history = useHistory();
     return (
         <div>
             <h1>News Page</h1>
-            {/* eslint-disable-next-line no-nested-ternary */}
-            <div>{loading ? 'Loading...' : error ? error.message : news.map((u) => <h3>{u}</h3>)}</div>
+            <div>
+                {/* eslint-disable-next-line no-nested-ternary */}
+                {loading ? 'Loading...' : error ? error.message : news.map((u) => (
+                    // eslint-disable-next-line max-len
+                    // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
+                    <h3 onClick={() => { history.push(`/news/${u}`); }} key={u}>{u}</h3>
+                ))}
+            </div>
         </div>
     );
 };
