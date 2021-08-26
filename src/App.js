@@ -1,7 +1,7 @@
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
-import {NewsPage} from "./pages/news";
-import {NewsItemPage} from "./pages/news-item";
-import React from "react";
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import {NewsPage} from './pages/news';
+import {NewsItemPage} from './pages/news-item';
+import React from 'react';
 
 function App() {
   return (
