@@ -16,10 +16,10 @@ const NewsPage = () => {
             <h1>News Page</h1>
             <div>
                 {/* eslint-disable-next-line no-nested-ternary */}
-                {loading ? 'Loading...' : error ? error.message : news.map((u) => (
+                {loading ? 'Loading...' : error ? error.message : news.map((item) => (
                     // eslint-disable-next-line max-len
                     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
-                    <h3 onClick={() => { history.push(`/news/${u}`); }} key={u}>{u}</h3>
+                    <h3 onClick={() => { history.push(`/news/${item.id}`); }} key={item.id}>{item.time}</h3>
                 ))}
             </div>
         </div>

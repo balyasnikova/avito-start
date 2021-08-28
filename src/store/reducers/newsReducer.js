@@ -16,7 +16,8 @@ export default function (state = initialState, action) {
     case GET_NEWS:
         return {
             ...state,
-            news: action.payload,
+            news: action.payload.newsList,
+            newsDescriptions: action.payload.newsDescriptions,
             loading: false,
 
         };

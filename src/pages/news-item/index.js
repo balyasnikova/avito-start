@@ -10,9 +10,13 @@ const NewsItemPage = () => {
     const newsList = useSelector((state) => state.newsList);
     const { loading, error, newsDescriptions } = newsList;
     useEffect(() => {
-        dispatch(getNewsDescription(newsId)).finally(() => {
+        if (!newsDescriptions[newsId]) {
+            dispatch(getNewsDescription(newsId)).finally(() => {
+                setCurrentNews(newsDescriptions[newsId]);
+            });
+        } else {
             setCurrentNews(newsDescriptions[newsId]);
-        });
+        }
     }, [dispatch]);
     return (
         <div>
