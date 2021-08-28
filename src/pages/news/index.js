@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import { getNews } from '../../store/actions/newsAction';
 
 const NewsPage = () => {
@@ -14,6 +15,7 @@ const NewsPage = () => {
     return (
         <div>
             <h1>News Page</h1>
+            <Button onClick={() => { dispatch(getNews()); }} variant="outline-secondary">Обновить</Button>
             <div>
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {loading ? 'Loading...' : error ? error.message : news.map((item) => (
