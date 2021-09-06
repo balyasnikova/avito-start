@@ -1,0 +1,8 @@
+.itemInfo {
+    position: relative;
+}
+
+.updateComment {
+    position: absolute;
+    top: 200px;
+}
