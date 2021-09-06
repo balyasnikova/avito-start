@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
-import { Button } from 'react-bootstrap';
+import { Button } from 'antd';
 import { getNewsDescription } from '../../store/actions/newsAction';
 import styles from './styles.module.css';
 
@@ -36,7 +36,7 @@ const NewsItemPage = () => {
             <h1>
                 News Item Page
             </h1>
-            <Button onClick={() => { history.goBack(); }} variant="outline-secondary">К списку новостей</Button>
+            <Button onClick={() => { history.goBack(); }}>К списку новостей</Button>
             <div>
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {loading ? 'Loading...' : error ? error.message : JSON.stringify(currentNews.kids || [])}
@@ -52,7 +52,6 @@ const NewsItemPage = () => {
                         });
                     }}
                     className={styles.updateComment}
-                    variant="outline-secondary"
                 >
                     Обновить комментарии
                 </Button>

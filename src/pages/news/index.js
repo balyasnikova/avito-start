@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button } from 'antd';
 import Moment from 'react-moment';
 import { getNews } from '../../store/actions/newsAction';
 import styles from './styles.module.css';
@@ -23,7 +23,7 @@ const NewsPage = () => {
     return (
         <div className={styles.wrap}>
             <h1>Hacker News</h1>
-            <Button onClick={() => { dispatch(getNews()); }} variant="outline-secondary">Обновить список новостей</Button>
+            <Button onClick={() => { dispatch(getNews()); }}>Обновить список новостей</Button>
             <div>
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {loading ? 'Loading...' : error ? error.message : news.map((item) => (
