@@ -1,5 +1,5 @@
 .wrap {
-    margin: 0 auto;
+    margin: 20px auto;
     width: 1000px;
 }
 
@@ -10,4 +10,17 @@
 
 .newsTitle {
     text-shadow: 3px 6px 6px rgba(95, 158, 160, 0.8);
+}
+
+.urlNews {
+    display: flex;
+    justify-content: center;
+}
+
+.commentsInfo {
+    padding: 10px 0;
+}
+
+.btnUpdateComments {
+    text-align: end;
 }

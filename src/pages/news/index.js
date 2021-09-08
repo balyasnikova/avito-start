@@ -30,6 +30,8 @@ const NewsPage = () => {
                     <Button
                         onClick={() => { dispatch(getNews()); }}
                     >
+                        &#8634;
+                        {' '}
                         update news list
                     </Button>
                 </Col>

@@ -1,0 +1,11 @@
+.author {
+    opacity: 50%;
+}
+
+.commentWrap {
+    margin: 5px;
+}
+
+.commentWrap:hover {
+    background-color: rgba(202, 208, 209, 0.22);
+}

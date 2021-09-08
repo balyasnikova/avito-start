@@ -7,6 +7,7 @@ import {
 } from 'antd';
 import { getNewsDescription } from '../../store/actions/newsAction';
 import styles from './styles.module.css';
+import Comments from './components/comments';
 
 const NewsItemPage = () => {
     const [currentNews, setCurrentNews] = useState({});
@@ -35,24 +36,25 @@ const NewsItemPage = () => {
     const history = useHistory();
     return (
         <div className={styles.wrap}>
-            <h1>
-                News Item Page
-            </h1>
-            <Row justify="end">
+            <Row justify="start">
                 <Col span={4}>
                     <Button
                         onClick={() => { history.goBack(); }}
                     >
-                        to news list
+                        &#8701;
+                        {' '}
+                        back to news list
                     </Button>
                 </Col>
             </Row>
             <div>
                 <Divider className={styles.newsTitle}>{currentNews.title}</Divider>
-                <Row justify="space-around">
-                    <Col span={4}>
-                        <Moment date={currentNews.time * 1000} format="DD.MM.YYYY HH:mm" />
-                    </Col>
+                <div className={styles.urlNews}>
+                    <a href={currentNews.url} target="_blank" rel="noreferrer">
+                        - go to news source -
+                    </a>
+                </div>
+                <Row className={styles.commentsInfo} justify="space-around">
                     <Col span={4}>
                         <div>
                             by
@@ -60,11 +62,18 @@ const NewsItemPage = () => {
                             {currentNews.by}
                         </div>
                     </Col>
+                    <Col span={4}>
+                        <Moment date={currentNews.time * 1000} format="DD.MM.YYYY HH:mm" />
+                    </Col>
                 </Row>
                 <Row className={styles.countCommentsWrap} justify="space-between" align="middle">
-                    <Col span={4} offset={4}>Comments</Col>
+                    <Col span={4} offset={1}>Comments</Col>
                     <Col span={3}>{currentNews.descendants}</Col>
-                    <Col span={5} offset={8}>
+                    <Col
+                        className={styles.btnUpdateComments}
+                        span={5}
+                        offset={8}
+                    >
                         <Button
                             size="small"
                             onClick={() => {
@@ -73,10 +82,16 @@ const NewsItemPage = () => {
                                 });
                             }}
                         >
+                            &#8634;
+                            {' '}
                             update comments
                         </Button>
                     </Col>
                 </Row>
+                {
+                    currentNews.kids && currentNews.kids.length
+                    && <Comments ids={currentNews.kids} newsId={currentNews.id} />
+                }
             </div>
         </div>
     );
