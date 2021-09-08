@@ -1,8 +1,13 @@
-.itemInfo {
-    position: relative;
+.wrap {
+    margin: 0 auto;
+    width: 1000px;
 }
 
-.updateComment {
-    position: absolute;
-    top: 200px;
+
+.countCommentsWrap {
+    background-color: rgba(179, 209, 210, 0.69);
+}
+
+.newsTitle {
+    text-shadow: 3px 6px 6px rgba(95, 158, 160, 0.8);
 }

@@ -56,6 +56,7 @@ export const getNewsDescription = (newsId) => async (dispatch) => {
                 r[item.id] = item;
                 return r;
             }, {});
+            console.log(res.data.kids);
         }
         dispatch({
             type: GET_NEWS_DESCRIPTION,

@@ -1,11 +1,7 @@
 .wrap {
-    margin: 0 auto;
+    margin: 20px auto;
     width: 1000px;
     position: relative;
-}
-
-h1 {
-    margin-left: 270px;
 }
 
 .wrapItem {
@@ -17,16 +13,11 @@ h1 {
     flex-direction: row;
 }
 
-h5 {
+.newsTitle {
+    padding-left: 10px;
     background-color: rgba(95, 158, 160, 0.69);
 }
 
 .itemInfo {
-    margin: 0 20px;
-}
-
-button {
-    position: absolute;
-    top: 10px;
-    right: 70px;
+    margin-left: 20px;
 }
