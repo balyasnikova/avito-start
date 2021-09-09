@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import {
+    Button,
+} from 'antd';
+import { CaretDownOutlined } from '@ant-design/icons';
 import { getComments } from '../../../../store/actions/newsAction';
 import styles from './styles.module.css';
 
@@ -21,15 +25,33 @@ const Comments = ({ ids = [], newsId }) => {
         });
     }, [dispatch]);
 
-    console.log('===>', newsComments);
     return (
         <div>
             {
-                newsComments.map((comment) => (
+                newsComments.map((comment, index) => (
                     <div className={styles.commentWrap} key={comment.id}>
-                        <div className={styles.author}>{comment.by}</div>
-                        <div>{comment.text}</div>
-                        { comment.kids && <div>Загрузить вложенные</div>}
+                        <div className={styles.wrapAuthor}>
+                            <div className={styles.author}>{comment.by}</div>
+                            { !comment.loaded && comment.kids && (
+                                <Button
+                                    role="button"
+                                    type="link"
+                                    icon={<CaretDownOutlined />}
+                                    onClick={() => {
+                                        dispatch(getComments(comment.kids, comment.id))
+                                            .finally(() => {
+                                                const newNewsComments = [...newsComments];
+                                                newNewsComments[index].loaded = true;
+                                                setNewsComments(newNewsComments);
+                                            });
+                                    }}
+                                />
+                            )}
+                        </div>
+                        <div dangerouslySetInnerHTML={{ __html: comment.text }} />
+                        <div className={styles.nestedComment}>
+                            { comment.loaded && <Comments ids={comment.kids} newsId={comment.id} />}
+                        </div>
                     </div>
                 ))
             }

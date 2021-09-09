@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Button, Row, Col } from 'antd';
 import Moment from 'react-moment';
+import { RedoOutlined } from '@ant-design/icons';
 import { getNews } from '../../store/actions/newsAction';
 import styles from './styles.module.css';
 
@@ -28,10 +29,9 @@ const NewsPage = () => {
                 </Col>
                 <Col span={6}>
                     <Button
+                        icon={<RedoOutlined />}
                         onClick={() => { dispatch(getNews()); }}
                     >
-                        &#8634;
-                        {' '}
                         update news list
                     </Button>
                 </Col>

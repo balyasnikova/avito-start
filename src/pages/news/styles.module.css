@@ -6,6 +6,7 @@
 
 .wrapItem {
     margin: 20px;
+    cursor: pointer;
 }
 
 .itemInfoWrap {

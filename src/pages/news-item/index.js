@@ -5,6 +5,7 @@ import Moment from 'react-moment';
 import {
     Button, Col, Row, Divider,
 } from 'antd';
+import { ArrowLeftOutlined, RedoOutlined } from '@ant-design/icons';
 import { getNewsDescription } from '../../store/actions/newsAction';
 import styles from './styles.module.css';
 import Comments from './components/comments';
@@ -39,10 +40,9 @@ const NewsItemPage = () => {
             <Row justify="start">
                 <Col span={4}>
                     <Button
+                        icon={<ArrowLeftOutlined />}
                         onClick={() => { history.goBack(); }}
                     >
-                        &#8701;
-                        {' '}
                         back to news list
                     </Button>
                 </Col>
@@ -76,14 +76,13 @@ const NewsItemPage = () => {
                     >
                         <Button
                             size="small"
+                            icon={<RedoOutlined />}
                             onClick={() => {
                                 dispatch(getNewsDescription(newsId)).finally(() => {
                                     setCurrentNews(newsDescriptions[newsId]);
                                 });
                             }}
                         >
-                            &#8634;
-                            {' '}
                             update comments
                         </Button>
                     </Col>

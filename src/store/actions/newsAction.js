@@ -58,7 +58,10 @@ export const getComments = (kids = [], newsId) => async (dispatch) => {
             payload: {
                 kids: responses.reduce((acc, { data: item }) => {
                     const r = acc;
-                    r[item.id] = item;
+                    r[item.id] = {
+                        ...item,
+                        loaded: false,
+                    };
                     return r;
                 }, {}),
                 newsId,
